@@ -5,28 +5,113 @@
 :root {
     --square-size: 100px;
     --mark-size: calc(var(--square-size) * .9);
+    --body-clr: #f2f7ff;
+    --blue-clr: #0b409c;
+    --border-clr:  #10316b;
+    --yellow-clr: #fdbe34;
+    --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    --font-family: 'Poppins', sans-serif;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --typewriter-duration: 2s;
+    --typewriter-steps: 36;
 }
 
 body {
-    margin: 0
+    background: var(--body-clr);
+    margin: 0;
+    font-family: var(--font-family);
+}
+
+h1, p {
+    margin: 0;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.text-container > h1 {
+    font-size: 4em;
+    color: var(--blue-clr);
+}
+
+.text-container span {
+    color: var(--yellow-clr);
+}
+
+.text-container > p {
+    position: relative;
+    font-size: 1.1em;
+    color: var(--border-clr);
+}
+
+.text-container > p::before,
+.text-container > p::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.text-container > p::before {
+    background-color: var(--body-clr);
+    animation: typewritter var(--typewriter-duration) steps(var(--typewriter-steps)) 1s forwards;
+}
+
+.text-container > p::after {
+    width: 0.125em;
+    background-color: var(--border-clr);
+    animation: 
+        typewritter var(--typewriter-duration) steps(var(--typewriter-steps)) 1s forwards,
+        blink 750ms steps(2, start) infinite;
+}
+
+@keyframes typewritter {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
 }
 
 .board {
     width: 100vw;
-    height: 100vh;
+    height: 60vh;
     display: grid;
     justify-content: center;
     align-content: center;
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(3, auto);
+    opacity: 0;
+    transform: translateY(3rem);
+    animation: fadeUp 2s ease calc(var(--typewriter-duration) + 1s) forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .square {
     position: relative;
     width: var(--square-size);
     height: var(--square-size);
-    border: 1px solid black;
+    border: 1px solid var(--border-clr);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,9 +144,12 @@ body {
 }
 
 .square.x::before,
-.square.x::after,
+.square.x::after {
+    background-color: var(--blue-clr);
+}
+
 .square.o::before {
-    background-color: black
+    background-color: var(--yellow-clr);
 }
 
 .board.x .square:not(.x):not(.o):hover::before, 
@@ -109,7 +197,7 @@ body {
 .board.o .square:not(.x):not(.o):hover::after {
     width: calc(var(--mark-size) * .7);
     height: calc(var(--mark-size) * .7);
-    background-color: white;
+    background-color: var(--body-clr);
 }
 
 .winning-msg {
@@ -137,6 +225,7 @@ body {
     font-size: 3rem;
     background-color: white;
     cursor: pointer;
+    transition: var(--transition);
 }
 
 .winning-msg button:hover {

@@ -54,10 +54,10 @@ function handleClick(e) {
 
 function endGame(draw) {
     if (draw) {
-        winningMsgText.innerText = "Draw!"
+        winningMsgText.innerText = "Draw!🚩"
     }
     else {
-        winningMsgText.innerText = `${oTurn ? "O" : "X"} Wins!`
+        winningMsgText.innerText = `${oTurn ? "O" : "X"} Wins!🎉`
     }
     winningMsg.classList.add('active')
 }

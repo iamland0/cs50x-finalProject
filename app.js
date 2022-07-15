@@ -22,20 +22,24 @@ startGame()
 
 restartBtn.addEventListener('click', startGame)
 
+// Function to start the game
 function startGame() {
     oTurn = false
     squareElements.forEach(square => {
+        // Normalize the square boards, remove everything from it
         square.classList.remove(X_MARK)
         square.classList.remove(O_MARK)
         square.removeEventListener('click', handleClick)
-        // We set once to true so we can only fire/trigger by clicking the element once
+        // We set the third argument to { once: true } so we can only fire/trigger the element once
         square.addEventListener('click', handleClick, { once: true })
     })
     setBoardHoverClass(board)
     winningMsg.classList.remove('active')
 }
 
+// Function that is going to be triggered when the user click the square elements
 function handleClick(e) {
+    // Get the element that triggers the event
     const square = e.target
     // Check for the current mark
     const currMark = oTurn ? O_MARK : X_MARK
@@ -52,6 +56,7 @@ function handleClick(e) {
     }
 }
 
+// Function to show a winning message on a certain condition
 function endGame(draw) {
     if (draw) {
         winningMsgText.innerText = "Draw!🚩"
@@ -62,6 +67,7 @@ function endGame(draw) {
     winningMsg.classList.add('active')
 }
 
+// Function to check if all of the squares are filled by X or O
 function isDraw() {
     return [...squareElements].every(square => square.classList.contains(X_MARK) || square.classList.contains(O_MARK))
 }
@@ -71,11 +77,12 @@ function putMark(square, mark) {
    square.classList.add(mark)
 }
 
+// Function to switch O to X and vice versa
 function switchTurns() {
-    // Switch O to X and vice versa
     oTurn = !oTurn
 }
 
+// Function to switch the hover class. So if it's X's turn, it will show X when we hover the square, otherwise O
 function setBoardHoverClass(board) {
     board.classList.remove(X_MARK)
     board.classList.remove(O_MARK)
@@ -87,9 +94,8 @@ function setBoardHoverClass(board) {
     }
 }
 
+// Function that checks if some of the combination is true, and also every square in that combination has the same mark either X or O 
 function checkWinner(currMark) {
-    /* Check if an some of the combination is true, and also every square
-        in that combination has the same mark either X or O */
     return WINNING_COMBINATIONS.some(combination => {
         return combination.every(squareIndex => {
             return squareElements[squareIndex].classList.contains(currMark)

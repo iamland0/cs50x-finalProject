@@ -267,10 +267,6 @@ h1, p {
     position: absolute;
 }
 
-.penguin:active {
-    transform: scale(1.05);
-}
-
 .penguin-head {
 width: 50%;
     height: 45%;

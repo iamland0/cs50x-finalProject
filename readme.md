@@ -1,7 +1,8 @@
 # Tic Tac Toe.
 #### Video Demo:  [YouTube](https://youtu.be/1VTB7sYffOU)
 #### Description: A simple tic tac toe game to play with your local friends.
-![Tic Tac Toe Page](tictactoe.JPG)
+![tictactoe](https://user-images.githubusercontent.com/93187436/179347004-2023b712-f4bd-4d82-9dca-7fac63603fce.JPG)
+
 ## Overview
 This game is just a basic tic tac toe game where the first player who gets 3 in a row will win the game. I mean you guys must already know how to play this classic game, there’s no need for me to explain it anyway hahaha, but just in case if there’s any of you that don’t know how to play this game, I’ll just put it in there. In this game, you can play a tic tac toe game with your local friends. Disclaimer: you can’t play this game by yourself since I didn’t implement an algorithm / AI for you to play against with. But I might add this feature in the future if I got the time so a lonely people like me can play by just me, myself, and I haha, just kidding. This simple tic tac toe game was build by using pure HTML, CSS, and JavaScript. The reason why I chose to create a simple tic tac toe game as my final project is because I want to dive deep more into the fundamentals before using any frameworks so that I can have a strong grasp of the fundamentals. 
 
